@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class ShipController : MonoBehaviour
@@ -23,10 +24,24 @@ public class ShipController : MonoBehaviour
     bool dead = false;
     float deadCounter = 1;
 
+
+    GameObject life1;
+    GameObject life2;
+    GameObject life3;
+
     // Use this for initialization
     void Start()
     {
         playerShip = GameObject.Find("playerShip");
+
+        life1 = GameObject.Find("Canvas/Life1");
+        life2 = GameObject.Find("Canvas/Life2");
+        life3 = GameObject.Find("Canvas/Life3");
+
+        if (life1 != null)
+        {
+            DrawLifes();
+        }
     }
 
 
@@ -34,6 +49,7 @@ public class ShipController : MonoBehaviour
 
     void Update()
     {
+
         if (dead == true)
         {
             deadCounter -= Time.deltaTime;
@@ -110,7 +126,33 @@ public class ShipController : MonoBehaviour
 
     }
 
-
+    void DrawLifes()
+    {
+        if (life == 3)
+        {
+            life1.GetComponent<Image>().enabled = true;
+            life2.GetComponent<Image>().enabled = true;
+            life3.GetComponent<Image>().enabled = true;
+        }
+        if (life == 2)
+        {
+            life1.GetComponent<Image>().enabled = true;
+            life2.GetComponent<Image>().enabled = true;
+            life3.GetComponent<Image>().enabled = false;
+        }
+        if (life == 1)
+        {
+            life1.GetComponent<Image>().enabled = true;
+            life2.GetComponent<Image>().enabled = false;
+            life3.GetComponent<Image>().enabled = false;
+        }
+        if (life == 0)
+        {
+            life1.GetComponent<Image>().enabled = false;
+            life2.GetComponent<Image>().enabled = false;
+            life3.GetComponent<Image>().enabled = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -120,6 +162,11 @@ public class ShipController : MonoBehaviour
             {
                 life--;
                 Destroy(collision.gameObject);
+
+                if (life1 != null)
+                {
+                    DrawLifes();
+                }
             }
 
             if (life <= 0)

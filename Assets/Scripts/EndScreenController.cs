@@ -69,6 +69,7 @@ public class EndScreenController : MonoBehaviour {
     public void PlayNextLevel()
     {
         gameData.GetComponent<GameData>().currentLevel += 1;
+        gameData.GetComponent<GameData>().success = false;
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
         Debug.Log("Loading Level: " + gameData.GetComponent<GameData>().currentLevel);
     }
