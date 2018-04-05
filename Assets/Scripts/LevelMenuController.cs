@@ -62,7 +62,7 @@ public class LevelMenuController : MonoBehaviour {
         {
             int a = i + 1;
 
-            string nameX = "Canvas/LevelButton" + a;
+            string nameX = "Canvas/BigPanel/MidPanel/LevelButton" + a;
 
             GameObject buttonX = GameObject.Find(nameX);
 

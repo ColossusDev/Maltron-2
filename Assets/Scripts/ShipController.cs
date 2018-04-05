@@ -34,9 +34,9 @@ public class ShipController : MonoBehaviour
     {
         playerShip = GameObject.Find("playerShip");
 
-        life1 = GameObject.Find("Canvas/Life1");
-        life2 = GameObject.Find("Canvas/Life2");
-        life3 = GameObject.Find("Canvas/Life3");
+        life1 = GameObject.Find("Canvas/MainPanel/LifePanel/Life1");
+        life2 = GameObject.Find("Canvas/MainPanel/LifePanel/Life2");
+        life3 = GameObject.Find("Canvas/MainPanel/LifePanel/Life3");
 
         if (life1 != null)
         {
