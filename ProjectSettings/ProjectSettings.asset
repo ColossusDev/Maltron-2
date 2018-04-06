@@ -634,7 +634,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: cb260dad-6f66-44b0-b7ba-8cc7366be7c8
-  projectName: Maltron 2 V1
+  projectName: Maltron 2
   organizationId: kleimann
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

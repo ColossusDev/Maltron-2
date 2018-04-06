@@ -18,13 +18,10 @@ public class EndScreenController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gameData = GameObject.Find("GameDataController");
-        finshText = GameObject.Find("Canvas/Text");
+        finshText = GameObject.Find("Canvas/Panel_OUT/Text");
 
-        nextButton = GameObject.Find("NextButton");
-        restartButton = GameObject.Find("RestartButton");
-
-        textNextButton = GameObject.Find("NextButton/TextNextButton");
-        textRestartButton = GameObject.Find("RestartButton/TextRestartButton");
+        nextButton = GameObject.Find("Canvas/Panel_OUT/NextButton");
+        restartButton = GameObject.Find("Canvas/Panel_OUT/RestartButton");
 
         if (gameData.GetComponent<GameData>().success == true)
         {
@@ -34,8 +31,6 @@ public class EndScreenController : MonoBehaviour {
 
             nextButton.GetComponent<Image>().enabled = true;
             nextButton.GetComponent<Button>().enabled = true;
-            textNextButton.GetComponent<Text>().enabled = true;
-
         }
         else
         {
@@ -43,7 +38,6 @@ public class EndScreenController : MonoBehaviour {
 
             restartButton.GetComponent<Image>().enabled = true;
             restartButton.GetComponent<Button>().enabled = true;
-            textRestartButton.GetComponent<Text>().enabled = true;
         }
     }
 
