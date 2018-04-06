@@ -23,3 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SkillManager.unity
     guid: ee1d515a0600c8c49b9b96c673ca6402
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 819db3b49a7241749971f669eca8ab43
+  - enabled: 1
+    path: Assets/Scenes/Achievements.unity
+    guid: 5df64f61c590273459a7210f4f348220
+  - enabled: 1
+    path: Assets/Scenes/Highscores.unity
+    guid: 9e7677a674d45504fbba2c4f4be1a9f6

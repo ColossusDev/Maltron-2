@@ -20,8 +20,8 @@ public class EndScreenController : MonoBehaviour {
         gameData = GameObject.Find("GameDataController");
         finshText = GameObject.Find("Canvas/Panel_OUT/Text");
 
-        nextButton = GameObject.Find("Canvas/Panel_OUT/NextButton");
-        restartButton = GameObject.Find("Canvas/Panel_OUT/RestartButton");
+        nextButton = GameObject.Find("Canvas/Panel_OUT/Panel/NextButton");
+        restartButton = GameObject.Find("Canvas/Panel_OUT/Panel/RestartButton");
 
         if (gameData.GetComponent<GameData>().success == true)
         {

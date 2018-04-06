@@ -18,6 +18,15 @@ public class GameData : MonoBehaviour {
 
     GameObject moneyText;
 
+    public bool[] equiptItem1 = new bool[4];
+    public bool[] equiptItem2 = new bool[4];
+    public bool[] equiptItem3 = new bool[4];
+    public bool[] equiptItem4 = new bool[4];
+
+    public bool[] ownItem1 = new bool[4];
+    public bool[] ownItem2 = new bool[4];
+    public bool[] ownItem3 = new bool[4];
+    public bool[] ownItem4 = new bool[4];
 
     void Awake () {
         if (gameData == null)
@@ -34,6 +43,29 @@ public class GameData : MonoBehaviour {
         {
             LevelMap = new int[20];
             SetLevelToStart();
+
+            equiptItem1 = new bool[4];
+            equiptItem2 = new bool[4];
+            equiptItem3 = new bool[4];
+            equiptItem4 = new bool[4];
+
+            ownItem1 = new bool[4];
+            ownItem2 = new bool[4];
+            ownItem3 = new bool[4];
+            ownItem4 = new bool[4];
+
+            for (int i = 0; i < equiptItem1.Length; i++)
+            {
+                equiptItem1[i] = false;
+                equiptItem2[i] = false;
+                equiptItem3[i] = false;
+                equiptItem4[i] = false;
+
+                ownItem1[i] = false;
+                ownItem2[i] = false;
+                ownItem3[i] = false;
+                ownItem4[i] = false;
+            }
         }
         else
         {
@@ -80,12 +112,12 @@ public class GameData : MonoBehaviour {
 
     public void OpenSettings()
     {
-        //SceneManager.LoadScene("Settings", LoadSceneMode.Single);
+        SceneManager.LoadScene("Settings", LoadSceneMode.Single);
     }
 
     public void OpenAchievements()
     {
-        //SceneManager.LoadScene("Achievements", LoadSceneMode.Single);
+        SceneManager.LoadScene("Achievements", LoadSceneMode.Single);
     }
 
 }
