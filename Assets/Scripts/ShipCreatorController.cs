@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.UI;
 
 public class ShipCreatorController : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class ShipCreatorController : MonoBehaviour {
     public GameObject buyButtonItem2;
     public GameObject buyButtonItem3;
     public GameObject buyButtonItem4;
+
+    public Sprite buyButton;
+    public Sprite equipButton;
+    public Sprite deselectButton;
 
     public Sprite item1Sprite1;
     public Sprite item1Sprite2;
@@ -42,10 +47,21 @@ public class ShipCreatorController : MonoBehaviour {
     Sprite[] item3Sprites = new Sprite[4];
     Sprite[] item4Sprites = new Sprite[4];
 
+    public GameObject priceTextItem1;
+    public GameObject priceTextItem2;
+    public GameObject priceTextItem3;
+    public GameObject priceTextItem4;
+
     int item1Counter = 0;
     int item2Counter = 0;
     int item3Counter = 0;
     int item4Counter = 0;
+
+    int[] item1Prices = new int[4];
+    int[] item2Prices = new int[4];
+    int[] item3Prices = new int[4];
+    int[] item4Prices = new int[4];
+
 
     // Use this for initialization
     void Start () {
@@ -106,6 +122,26 @@ public class ShipCreatorController : MonoBehaviour {
                 item4Counter = i;
             }
         }
+
+        item1Prices[0] = 100;
+        item2Prices[0] = 100;
+        item3Prices[0] = 100;
+        item4Prices[0] = 100;
+
+        item1Prices[1] = 200;
+        item2Prices[1] = 200;
+        item3Prices[1] = 200;
+        item4Prices[1] = 200;
+
+        item1Prices[2] = 300;
+        item2Prices[2] = 300;
+        item3Prices[2] = 300;
+        item4Prices[2] = 300;
+
+        item1Prices[3] = 400;
+        item2Prices[3] = 400;
+        item3Prices[3] = 400;
+        item4Prices[3] = 400;
     }
 
     // Update is called once per frame
@@ -119,6 +155,80 @@ public class ShipCreatorController : MonoBehaviour {
         item2.GetComponent<Image>().sprite = item2Sprites[item2Counter];
         item3.GetComponent<Image>().sprite = item3Sprites[item3Counter];
         item4.GetComponent<Image>().sprite = item4Sprites[item4Counter];
+
+        priceTextItem1.GetComponent<Text>().text = item1Prices[item1Counter] + "$";
+        priceTextItem2.GetComponent<Text>().text = item2Prices[item2Counter] + "$";
+        priceTextItem3.GetComponent<Text>().text = item3Prices[item3Counter] + "$";
+        priceTextItem4.GetComponent<Text>().text = item4Prices[item4Counter] + "$";
+
+        //1
+        if (gameData.GetComponent<GameData>().ownItem1[item1Counter] == false)
+        {
+            buyButtonItem1.GetComponent<Image>().sprite = buyButton;
+            priceTextItem1.GetComponent<Text>().enabled = true;
+        }
+        else if (gameData.GetComponent<GameData>().equiptItem1[item1Counter] == false)
+        {
+            buyButtonItem1.GetComponent<Image>().sprite = equipButton;
+            priceTextItem1.GetComponent<Text>().text = "owned";
+        }
+        else
+        {
+            buyButtonItem1.GetComponent<Image>().sprite = deselectButton;
+            priceTextItem1.GetComponent<Text>().enabled = true;
+            priceTextItem1.GetComponent<Text>().text = "equiped";
+        }
+        //2
+        if (gameData.GetComponent<GameData>().ownItem2[item2Counter] == false)
+        {
+            buyButtonItem2.GetComponent<Image>().sprite = buyButton;
+            priceTextItem2.GetComponent<Text>().enabled = true;
+        }
+        else if (gameData.GetComponent<GameData>().equiptItem2[item2Counter] == false)
+        {
+            buyButtonItem2.GetComponent<Image>().sprite = equipButton;
+            priceTextItem2.GetComponent<Text>().text = "owned";
+        }
+        else
+        {
+            buyButtonItem2.GetComponent<Image>().sprite = deselectButton;
+            priceTextItem2.GetComponent<Text>().enabled = true;
+            priceTextItem2.GetComponent<Text>().text = "equiped";
+        }
+        //3
+        if (gameData.GetComponent<GameData>().ownItem3[item3Counter] == false)
+        {
+            buyButtonItem3.GetComponent<Image>().sprite = buyButton;
+            priceTextItem3.GetComponent<Text>().enabled = true;
+        }
+        else if (gameData.GetComponent<GameData>().equiptItem3[item3Counter] == false)
+        {
+            buyButtonItem3.GetComponent<Image>().sprite = equipButton;
+            priceTextItem3.GetComponent<Text>().text = "owned";
+        }
+        else
+        {
+            buyButtonItem3.GetComponent<Image>().sprite = deselectButton;
+            priceTextItem3.GetComponent<Text>().enabled = true;
+            priceTextItem3.GetComponent<Text>().text = "equiped";
+        }
+        //4
+        if (gameData.GetComponent<GameData>().ownItem4[item4Counter] == false)
+        {
+            buyButtonItem4.GetComponent<Image>().sprite = buyButton;
+            priceTextItem4.GetComponent<Text>().enabled = true;
+        }
+        else if (gameData.GetComponent<GameData>().equiptItem4[item4Counter] == false)
+        {
+            buyButtonItem4.GetComponent<Image>().sprite = equipButton;
+            priceTextItem4.GetComponent<Text>().text = "owned";
+        }
+        else
+        {
+            buyButtonItem4.GetComponent<Image>().sprite = deselectButton;
+            priceTextItem4.GetComponent<Text>().enabled = true;
+            priceTextItem4.GetComponent<Text>().text = "equiped";
+        }
     }
 
     public void SwitchButtonRight(int item)
@@ -205,16 +315,120 @@ public class ShipCreatorController : MonoBehaviour {
 
     public void BuyItem(int item)
     {
+        if (item == 1)
+        {
+            if (item1Prices[item1Counter] <= gameData.GetComponent<GameData>().money && gameData.GetComponent<GameData>().ownItem1[item1Counter] == false)
+            {
+                gameData.GetComponent<GameData>().money -= item1Prices[item1Counter];
+                gameData.GetComponent<GameData>().ownItem1[item1Counter] = true;
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem1.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem1[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem1[item1Counter] = true;
+            }
+            else if(gameData.GetComponent<GameData>().ownItem1[item1Counter] == true && gameData.GetComponent<GameData>().equiptItem1[item1Counter] == false)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem1.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem1[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem1[item1Counter] = true;
+            }
+            else if (gameData.GetComponent<GameData>().equiptItem1[item1Counter] == true)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem1.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem1[i] = false;
+                }
+            }
+        }
+        if (item == 2)
+        {
+            if (item2Prices[item2Counter] <= gameData.GetComponent<GameData>().money && gameData.GetComponent<GameData>().ownItem2[item2Counter] == false)
+            {
+                gameData.GetComponent<GameData>().money -= item2Prices[item2Counter];
+                gameData.GetComponent<GameData>().ownItem2[item2Counter] = true;
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem2.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem2[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem2[item2Counter] = true;
+            }
+            else if (gameData.GetComponent<GameData>().ownItem2[item2Counter] == true && gameData.GetComponent<GameData>().equiptItem2[item2Counter] == false)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem2.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem2[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem2[item2Counter] = true;
+            }
+            else if (gameData.GetComponent<GameData>().equiptItem2[item2Counter] == true)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem2.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem2[i] = false;
+                }
+            }
+        }
+        if (item == 3)
+        {
+            if (item2Prices[item3Counter] <= gameData.GetComponent<GameData>().money && gameData.GetComponent<GameData>().ownItem3[item3Counter] == false)
+            {
+                gameData.GetComponent<GameData>().money -= item3Prices[item3Counter];
+                gameData.GetComponent<GameData>().ownItem3[item3Counter] = true;
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem3.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem3[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem3[item3Counter] = true;
+            }
+            else if (gameData.GetComponent<GameData>().ownItem3[item3Counter] == true && gameData.GetComponent<GameData>().equiptItem3[item3Counter] == false)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem3.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem3[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem3[item3Counter] = true;
+            }
+            else if (gameData.GetComponent<GameData>().equiptItem3[item3Counter] == true)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem3.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem3[i] = false;
+                }
+            }
+        }
+        if (item == 4)
+        {
+            if (item4Prices[item4Counter] <= gameData.GetComponent<GameData>().money && gameData.GetComponent<GameData>().ownItem4[item4Counter] == false)
+            {
+                gameData.GetComponent<GameData>().money -= item4Prices[item4Counter];
+                gameData.GetComponent<GameData>().ownItem4[item4Counter] = true;
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem4.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem4[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem4[item4Counter] = true;
+            }
+            else if (gameData.GetComponent<GameData>().ownItem4[item4Counter] == true && gameData.GetComponent<GameData>().equiptItem4[item4Counter] == false)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem4.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem4[i] = false;
+                }
+                gameData.GetComponent<GameData>().equiptItem4[item4Counter] = true;
+            }
+            else if (gameData.GetComponent<GameData>().equiptItem4[item4Counter] == true)
+            {
+                for (int i = 0; i < gameData.GetComponent<GameData>().ownItem4.Length; i++)
+                {
+                    gameData.GetComponent<GameData>().equiptItem4[i] = false;
+                }
+            }
+        }
 
+        UIUpdate();
     }
 
-    public void EquipItem(int item)
-    {
-
-    }
-
-    public void DeselectItem(int item)
-    {
-
-    }
 }

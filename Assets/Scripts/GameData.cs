@@ -66,6 +66,8 @@ public class GameData : MonoBehaviour {
                 ownItem3[i] = false;
                 ownItem4[i] = false;
             }
+
+            money = 1000;
         }
         else
         {
