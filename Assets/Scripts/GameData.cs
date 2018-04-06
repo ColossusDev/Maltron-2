@@ -28,6 +28,11 @@ public class GameData : MonoBehaviour {
     public bool[] ownItem3 = new bool[4];
     public bool[] ownItem4 = new bool[4];
 
+    public int skillLaserDamage;
+    public int skillLaserSpeed;
+    public int skillTurbineSpeed;
+    public int skillHullStability;
+
     void Awake () {
         if (gameData == null)
         {
@@ -67,7 +72,12 @@ public class GameData : MonoBehaviour {
                 ownItem4[i] = false;
             }
 
-            money = 1000;
+            money = 100000;
+
+            skillLaserDamage = 0;
+            skillLaserSpeed = 0;
+            skillTurbineSpeed = 0;
+            skillHullStability = 0;
         }
         else
         {
