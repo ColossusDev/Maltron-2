@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class ShipController : MonoBehaviour
 {
 
+    GameObject gameData;
+
     public GameObject shot1;
     public GameObject explosion;
 
@@ -32,6 +34,8 @@ public class ShipController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gameData = GameObject.Find("GameDataController");
+
         playerShip = GameObject.Find("playerShip");
 
         life1 = GameObject.Find("Canvas/MainPanel/LifePanel/Life1");

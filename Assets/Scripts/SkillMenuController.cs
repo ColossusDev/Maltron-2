@@ -98,23 +98,23 @@ public class SkillMenuController : MonoBehaviour {
             buyButton4.GetComponent<Image>().sprite = finishButton;
         }
 
-        if (gameData.GetComponent<GameData>().skillLaserDamage == 1)
+        if (gameData.GetComponent<GameData>().skillLaserDamage >= 1)
         {
             skill1Level1.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserDamage == 2)
+        if (gameData.GetComponent<GameData>().skillLaserDamage >= 2)
         {
             skill1Level2.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserDamage == 3)
+        if (gameData.GetComponent<GameData>().skillLaserDamage >= 3)
         {
             skill1Level3.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserDamage == 4)
+        if (gameData.GetComponent<GameData>().skillLaserDamage >= 4)
         {
             skill1Level4.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserDamage == 5)
+        if (gameData.GetComponent<GameData>().skillLaserDamage >= 5)
         {
             skill1Level5.GetComponent<Image>().enabled = true;
         }
@@ -123,23 +123,23 @@ public class SkillMenuController : MonoBehaviour {
             skill1Level6.GetComponent<Image>().enabled = true;
         }
 
-        if (gameData.GetComponent<GameData>().skillLaserSpeed == 1)
+        if (gameData.GetComponent<GameData>().skillLaserSpeed >= 1)
         {
             skill2Level1.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserSpeed == 2)
+        if (gameData.GetComponent<GameData>().skillLaserSpeed >= 2)
         {
             skill2Level2.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserSpeed == 3)
+        if (gameData.GetComponent<GameData>().skillLaserSpeed >= 3)
         {
             skill2Level3.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserSpeed == 4)
+        if (gameData.GetComponent<GameData>().skillLaserSpeed >= 4)
         {
             skill2Level4.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillLaserSpeed == 5)
+        if (gameData.GetComponent<GameData>().skillLaserSpeed >= 5)
         {
             skill2Level5.GetComponent<Image>().enabled = true;
         }
@@ -148,23 +148,23 @@ public class SkillMenuController : MonoBehaviour {
             skill2Level6.GetComponent<Image>().enabled = true;
         }
 
-        if (gameData.GetComponent<GameData>().skillTurbineSpeed == 1)
+        if (gameData.GetComponent<GameData>().skillTurbineSpeed >= 1)
         {
             skill3Level1.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillTurbineSpeed == 2)
+        if (gameData.GetComponent<GameData>().skillTurbineSpeed >= 2)
         {
             skill3Level2.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillTurbineSpeed == 3)
+        if (gameData.GetComponent<GameData>().skillTurbineSpeed >= 3)
         {
             skill3Level3.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillTurbineSpeed == 4)
+        if (gameData.GetComponent<GameData>().skillTurbineSpeed >= 4)
         {
             skill3Level4.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillTurbineSpeed == 5)
+        if (gameData.GetComponent<GameData>().skillTurbineSpeed >= 5)
         {
             skill3Level5.GetComponent<Image>().enabled = true;
         }
@@ -173,23 +173,23 @@ public class SkillMenuController : MonoBehaviour {
             skill3Level6.GetComponent<Image>().enabled = true;
         }
 
-        if (gameData.GetComponent<GameData>().skillHullStability == 1)
+        if (gameData.GetComponent<GameData>().skillHullStability >= 1)
         {
             skill4Level1.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillHullStability == 2)
+        if (gameData.GetComponent<GameData>().skillHullStability >= 2)
         {
             skill4Level2.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillHullStability == 3)
+        if (gameData.GetComponent<GameData>().skillHullStability >= 3)
         {
             skill4Level3.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillHullStability == 4)
+        if (gameData.GetComponent<GameData>().skillHullStability >= 4)
         {
             skill4Level4.GetComponent<Image>().enabled = true;
         }
-        if (gameData.GetComponent<GameData>().skillHullStability == 5)
+        if (gameData.GetComponent<GameData>().skillHullStability >= 5)
         {
             skill4Level5.GetComponent<Image>().enabled = true;
         }

@@ -142,6 +142,8 @@ public class ShipCreatorController : MonoBehaviour {
         item2Prices[3] = 400;
         item3Prices[3] = 400;
         item4Prices[3] = 400;
+
+        UIUpdate();
     }
 
     // Update is called once per frame
