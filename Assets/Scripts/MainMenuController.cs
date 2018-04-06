@@ -39,6 +39,12 @@ public class MainMenuController : MonoBehaviour {
 
     public void OpenShipCreator()
     {
-        //SceneManager.LoadScene("ShipCreator", LoadSceneMode.Single);
+        SceneManager.LoadScene("ShipCreator", LoadSceneMode.Single);
     }
+
+    public void OpenSkillManager()
+    {
+        SceneManager.LoadScene("SkillManager", LoadSceneMode.Single);
+    }
+
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class GameData : MonoBehaviour {
@@ -71,4 +72,20 @@ public class GameData : MonoBehaviour {
     {
         money -= moneyNeg;
     }
+
+    public void OpenMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
+    public void OpenSettings()
+    {
+        //SceneManager.LoadScene("Settings", LoadSceneMode.Single);
+    }
+
+    public void OpenAchievements()
+    {
+        //SceneManager.LoadScene("Achievements", LoadSceneMode.Single);
+    }
+
 }
