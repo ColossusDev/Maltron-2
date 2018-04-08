@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GameObject go = Instantiate(ship);
-        go.name = "playerShip";
+        go.name = "Player";
     }
 	
 	// Update is called once per frame

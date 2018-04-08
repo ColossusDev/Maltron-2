@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor.UI;
 
 
 public class ShipController : MonoBehaviour
@@ -23,10 +24,10 @@ public class ShipController : MonoBehaviour
     public GameObject usedShot;
 
 
-    float shipSpeed = 5;
+    float shipSpeed = 1;
 
     bool shooting = false;
-    float gunCoolDown = 0;
+    public float gunCoolDown = 0;
 
 
     float gunCoolDownTimer = 0;
@@ -39,20 +40,88 @@ public class ShipController : MonoBehaviour
 
 
     GameObject life1;
-    GameObject life2;
-    GameObject life3;
+
+    GameObject ship0;
+    GameObject ship1;
+    GameObject ship2;
+    GameObject ship3;
+    GameObject ship4;
+
+    GameObject turbine1L;
+    GameObject turbine2L;
+    GameObject turbine3L;
+    GameObject turbine4L;
+
+    GameObject turbine1R;
+    GameObject turbine2R;
+    GameObject turbine3R;
+    GameObject turbine4R;
+
+    GameObject laser1L;
+    GameObject laser2L;
+    GameObject laser3L;
+    GameObject laser4L;
+
+    GameObject laser1R;
+    GameObject laser2R;
+    GameObject laser3R;
+    GameObject laser4R;
+
+    GameObject controll1L;
+    GameObject controll2L;
+    GameObject controll3L;
+    GameObject controll4L;
+
+    GameObject controll1R;
+    GameObject controll2R;
+    GameObject controll3R;
+    GameObject controll4R;
+
 
     // Use this for initialization
     void Start()
     {
         gameData = GameObject.Find("GameDataController");
 
-        life1 = GameObject.Find("Canvas/MainPanel/LifePanel/Life1");
-        life2 = GameObject.Find("Canvas/MainPanel/LifePanel/Life2");
-        life3 = GameObject.Find("Canvas/MainPanel/LifePanel/Life3");
+        life1 = GameObject.Find("Canvas/MainPanel/LifePanel/Text");
 
 
-        usedShot = shot0;
+        ship0 = GameObject.Find("Player/Ships/ship0");
+        ship1 = GameObject.Find("Player/Ships/ship1");
+        ship2 = GameObject.Find("Player/Ships/ship2");
+        ship3 = GameObject.Find("Player/Ships/ship3");
+        ship4 = GameObject.Find("Player/Ships/ship4");
+
+        turbine1L = GameObject.Find("Player/TurbineLeft/turb1");
+        turbine2L = GameObject.Find("Player/TurbineLeft/turb2");
+        turbine3L = GameObject.Find("Player/TurbineLeft/turb3");
+        turbine4L = GameObject.Find("Player/TurbineLeft/turb4");
+
+        turbine1R = GameObject.Find("Player/TurbineRight/turb1");
+        turbine2R = GameObject.Find("Player/TurbineRight/turb2");
+        turbine3R = GameObject.Find("Player/TurbineRight/turb3");
+        turbine4R = GameObject.Find("Player/TurbineRight/turb4");
+
+        laser1L = GameObject.Find("Player/FrontGunLeft/gun1");
+        laser2L = GameObject.Find("Player/FrontGunLeft/gun2");
+        laser3L = GameObject.Find("Player/FrontGunLeft/gun3");
+        laser4L = GameObject.Find("Player/FrontGunLeft/gun4");
+
+        laser1R = GameObject.Find("Player/FrontGunRight/gun1");
+        laser2R = GameObject.Find("Player/FrontGunRight/gun2");
+        laser3R = GameObject.Find("Player/FrontGunRight/gun3");
+        laser4R = GameObject.Find("Player/FrontGunRight/gun4");
+
+        controll1L = GameObject.Find("Player/Controlls/controll1L");
+        controll2L = GameObject.Find("Player/Controlls/controll2L");
+        controll3L = GameObject.Find("Player/Controlls/controll3L");
+        controll4L = GameObject.Find("Player/Controlls/controll4L");
+
+        controll1R = GameObject.Find("Player/Controlls/controll1");
+        controll2R = GameObject.Find("Player/Controlls/controll2");
+        controll3R = GameObject.Find("Player/Controlls/controll3");
+        controll4R = GameObject.Find("Player/Controlls/controll4");
+
 
         StartUpShip();
 
@@ -72,6 +141,7 @@ public class ShipController : MonoBehaviour
             life = gameData.GetComponent<GameData>().skillHullStability+2;
         }
 
+        usedShot = shot0;
         if (gameData.GetComponent<GameData>().skillLaserDamage == 1)
         {
             usedShot = shot1;
@@ -97,14 +167,192 @@ public class ShipController : MonoBehaviour
             usedShot = shot6;
         }
 
+        gunCoolDown = 1;
         if (gameData.GetComponent<GameData>().skillLaserSpeed > 0)
         {
-            gunCoolDown = (100 / (2 * gameData.GetComponent<GameData>().skillLaserSpeed) / 100);
+            float divider = 2 * (float)gameData.GetComponent<GameData>().skillLaserSpeed;
+            gunCoolDown = ((100 / divider) / 100);
         }
 
+        shipSpeed = 2.5f;
         if (gameData.GetComponent<GameData>().skillTurbineSpeed > 0)
         {
-            shipSpeed = 5 + gameData.GetComponent<GameData>().skillTurbineSpeed * 2;
+            shipSpeed = 2.5f + gameData.GetComponent<GameData>().skillTurbineSpeed * 1.5f;
+        }
+
+
+        ship0.GetComponent<SpriteRenderer>().enabled = false;
+        ship1.GetComponent<SpriteRenderer>().enabled = false;
+        ship2.GetComponent<SpriteRenderer>().enabled = false;
+        ship3.GetComponent<SpriteRenderer>().enabled = false;
+        ship4.GetComponent<SpriteRenderer>().enabled = false;
+
+        ship0.GetComponent<PolygonCollider2D>().enabled = false;
+        ship1.GetComponent<PolygonCollider2D>().enabled = false;
+        ship2.GetComponent<PolygonCollider2D>().enabled = false;
+        ship3.GetComponent<PolygonCollider2D>().enabled = false;
+        ship4.GetComponent<PolygonCollider2D>().enabled = false;
+
+        bool set = false;
+        for (int i = 0; i < 4; i++)
+        {
+            if (gameData.GetComponent<GameData>().equiptItem1[i])
+            {
+                if (i == 0)
+                {
+                    set = true;
+                    ship1.GetComponent<SpriteRenderer>().enabled = true;
+                    ship1.GetComponent<PolygonCollider2D>().enabled = true;
+                }
+                if (i == 1)
+                {
+                    set = true;
+                    ship2.GetComponent<SpriteRenderer>().enabled = true;
+                    ship2.GetComponent<PolygonCollider2D>().enabled = true;
+                }
+                if (i == 2)
+                {
+                    set = true;
+                    ship3.GetComponent<SpriteRenderer>().enabled = true;
+                    ship3.GetComponent<PolygonCollider2D>().enabled = true;
+                }
+                if (i == 3)
+                {
+                    set = true;
+                    ship4.GetComponent<SpriteRenderer>().enabled = true;
+                    ship4.GetComponent<PolygonCollider2D>().enabled = true;
+                }
+            }
+        }
+        if (set == false)
+        {
+            ship0.GetComponent<SpriteRenderer>().enabled = true;
+            ship0.GetComponent<PolygonCollider2D>().enabled = true;
+        }
+
+
+        laser1L.GetComponent<SpriteRenderer>().enabled = false;
+        laser1R.GetComponent<SpriteRenderer>().enabled = false;
+        laser2L.GetComponent<SpriteRenderer>().enabled = false;
+        laser2R.GetComponent<SpriteRenderer>().enabled = false;
+        laser3L.GetComponent<SpriteRenderer>().enabled = false;
+        laser3R.GetComponent<SpriteRenderer>().enabled = false;
+        laser4L.GetComponent<SpriteRenderer>().enabled = false;
+        laser4R.GetComponent<SpriteRenderer>().enabled = false;
+
+
+        lasergun = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (gameData.GetComponent<GameData>().equiptItem2[i])
+            {
+                if (i == 0)
+                {
+                    laser1L.GetComponent<SpriteRenderer>().enabled = true;
+                    laser1R.GetComponent<SpriteRenderer>().enabled = true;
+                    lasergun = 1;
+                }
+                if (i == 1)
+                {
+                    laser2L.GetComponent<SpriteRenderer>().enabled = true;
+                    laser2R.GetComponent<SpriteRenderer>().enabled = true;
+                    lasergun = 2;
+                }
+                if (i == 2)
+                {
+                    laser3L.GetComponent<SpriteRenderer>().enabled = true;
+                    laser3R.GetComponent<SpriteRenderer>().enabled = true;
+                    lasergun = 3;
+                }
+                if (i == 3)
+                {
+                    laser4L.GetComponent<SpriteRenderer>().enabled = true;
+                    laser4R.GetComponent<SpriteRenderer>().enabled = true;
+                    lasergun = 4;
+                }
+            }
+        }
+
+        turbine1L.GetComponent<SpriteRenderer>().enabled = false;
+        turbine2L.GetComponent<SpriteRenderer>().enabled = false;
+        turbine3L.GetComponent<SpriteRenderer>().enabled = false;
+        turbine4L.GetComponent<SpriteRenderer>().enabled = false;
+
+        turbine1R.GetComponent<SpriteRenderer>().enabled = false;
+        turbine2R.GetComponent<SpriteRenderer>().enabled = false;
+        turbine3R.GetComponent<SpriteRenderer>().enabled = false;
+        turbine4R.GetComponent<SpriteRenderer>().enabled = false;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (gameData.GetComponent<GameData>().equiptItem3[i])
+            {
+                if (i == 0)
+                {
+                    turbine1L.GetComponent<SpriteRenderer>().enabled = true;
+                    turbine1R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.2f;
+                }
+                if (i == 1)
+                {
+                    turbine2L.GetComponent<SpriteRenderer>().enabled = true;
+                    turbine2R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.4f;
+
+                }
+                if (i == 2)
+                {
+                    turbine3L.GetComponent<SpriteRenderer>().enabled = true;
+                    turbine3R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.6f;
+                }
+                if (i == 3)
+                {
+                    turbine4L.GetComponent<SpriteRenderer>().enabled = true;
+                    turbine4R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.8f;
+                }
+            }
+        }
+
+
+        controll1L.GetComponent<SpriteRenderer>().enabled = false;
+        controll2L.GetComponent<SpriteRenderer>().enabled = false;
+        controll3L.GetComponent<SpriteRenderer>().enabled = false;
+        controll4L.GetComponent<SpriteRenderer>().enabled = false;
+
+        controll1R.GetComponent<SpriteRenderer>().enabled = false;
+        controll2R.GetComponent<SpriteRenderer>().enabled = false;
+        controll3R.GetComponent<SpriteRenderer>().enabled = false;
+        controll4R.GetComponent<SpriteRenderer>().enabled = false;
+
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (gameData.GetComponent<GameData>().equiptItem4[i])
+            {
+                if (i == 0)
+                {
+                    controll1L.GetComponent<SpriteRenderer>().enabled = true;
+                    controll1R.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                if (i == 1)
+                {
+                    controll2L.GetComponent<SpriteRenderer>().enabled = true;
+                    controll2R.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                if (i == 2)
+                {
+                    controll3L.GetComponent<SpriteRenderer>().enabled = true;
+                    controll3R.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                if (i == 3)
+                {
+                    controll4L.GetComponent<SpriteRenderer>().enabled = true;
+                    controll4R.GetComponent<SpriteRenderer>().enabled = true;
+                }
+            }
         }
     }
 
@@ -155,29 +403,39 @@ public class ShipController : MonoBehaviour
             {
                 if (shooting == true && lasergun == 0)
                 {
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(0, 0.8f, 0), shot1.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0, 0.8f, 0), usedShot.transform.rotation);
+                    gunCoolDownTimer = gunCoolDown;
+                }
+                if (shooting == true && lasergun == 1)
+                {
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.3f, 0.6f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.3f, 0.6f, 0), usedShot.transform.rotation);
                     gunCoolDownTimer = gunCoolDown;
                 }
                 if (shooting == true && lasergun == 2)
                 {
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(-0.2f, 0.8f, 0), shot1.transform.rotation * new Quaternion(-1, 15, 0, 0));
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(0.2f, 0.8f, 0), shot1.transform.rotation * new Quaternion(1, 15, 0, 0));
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.25f, 0.6f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.25f, 0.6f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.35f, 0.6f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.35f, 0.6f, 0), usedShot.transform.rotation);
                     gunCoolDownTimer = gunCoolDown;
                 }
                 if (shooting == true && lasergun == 3)
                 {
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(0, 0.8f, 0), shot1.transform.rotation);
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(-0.2f, 0.8f, 0), shot1.transform.rotation * new Quaternion(-1, 15, 0, 0));
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(0.2f, 0.8f, 0), shot1.transform.rotation * new Quaternion(1, 15, 0, 0));
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.25f, 0.6f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.25f, 0.6f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.35f, 0.6f, 0), usedShot.transform.rotation * new Quaternion(1, 7, 0, 0));
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.35f, 0.6f, 0), usedShot.transform.rotation * new Quaternion(-1, 7, 0, 0));
                     gunCoolDownTimer = gunCoolDown;
                 }
                 if (shooting == true && lasergun == 4)
                 {
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(0, 0.8f, 0), shot1.transform.rotation);
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(-0.2f, 0.8f, 0), shot1.transform.rotation * new Quaternion(-1, 15, 0, 0));
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(0.2f, 0.8f, 0), shot1.transform.rotation * new Quaternion(1, 15, 0, 0));
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(-0.3f, 0.8f, 0), shot1.transform.rotation * new Quaternion(-1, 7, 0, 0));
-                    Instantiate(shot1, this.gameObject.transform.position + new Vector3(0.3f, 0.8f, 0), shot1.transform.rotation * new Quaternion(1, 7, 0, 0));
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.05f, 0.8f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.05f, 0.8f, 0), usedShot.transform.rotation);
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.35f, 0.6f, 0), usedShot.transform.rotation * new Quaternion(1, 7, 0, 0));
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.35f, 0.6f, 0), usedShot.transform.rotation * new Quaternion(-1, 7, 0, 0));
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(-0.35f, 0.6f, 0), usedShot.transform.rotation * new Quaternion(-1, 7, 0, 0));
+                    Instantiate(usedShot, this.gameObject.transform.position + new Vector3(0.35f, 0.6f, 0), usedShot.transform.rotation * new Quaternion(1, 7, 0, 0));
                     gunCoolDownTimer = gunCoolDown;
                 }
             }
@@ -190,30 +448,7 @@ public class ShipController : MonoBehaviour
 
     void DrawLifes()
     {
-        if (life == 3)
-        {
-            life1.GetComponent<Image>().enabled = true;
-            life2.GetComponent<Image>().enabled = true;
-            life3.GetComponent<Image>().enabled = true;
-        }
-        if (life == 2)
-        {
-            life1.GetComponent<Image>().enabled = true;
-            life2.GetComponent<Image>().enabled = true;
-            life3.GetComponent<Image>().enabled = false;
-        }
-        if (life == 1)
-        {
-            life1.GetComponent<Image>().enabled = true;
-            life2.GetComponent<Image>().enabled = false;
-            life3.GetComponent<Image>().enabled = false;
-        }
-        if (life == 0)
-        {
-            life1.GetComponent<Image>().enabled = false;
-            life2.GetComponent<Image>().enabled = false;
-            life3.GetComponent<Image>().enabled = false;
-        }
+        life1.GetComponent<Text>().text = life + "";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -236,7 +471,46 @@ public class ShipController : MonoBehaviour
                 Instantiate(explosion, this.gameObject.transform.position + new Vector3(0, 0, 0), explosion.transform.rotation);
                 dead = true;
 
-                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                ship0.GetComponent<SpriteRenderer>().enabled = false;
+                ship1.GetComponent<SpriteRenderer>().enabled = false;
+                ship2.GetComponent<SpriteRenderer>().enabled = false;
+                ship3.GetComponent<SpriteRenderer>().enabled = false;
+                ship4.GetComponent<SpriteRenderer>().enabled = false;
+
+                ship0.GetComponent<PolygonCollider2D>().enabled = false;
+                ship1.GetComponent<PolygonCollider2D>().enabled = false;
+                ship2.GetComponent<PolygonCollider2D>().enabled = false;
+                ship3.GetComponent<PolygonCollider2D>().enabled = false;
+                ship4.GetComponent<PolygonCollider2D>().enabled = false;
+
+                laser1L.GetComponent<SpriteRenderer>().enabled = false;
+                laser1R.GetComponent<SpriteRenderer>().enabled = false;
+                laser2L.GetComponent<SpriteRenderer>().enabled = false;
+                laser2R.GetComponent<SpriteRenderer>().enabled = false;
+                laser3L.GetComponent<SpriteRenderer>().enabled = false;
+                laser3R.GetComponent<SpriteRenderer>().enabled = false;
+                laser4L.GetComponent<SpriteRenderer>().enabled = false;
+                laser4R.GetComponent<SpriteRenderer>().enabled = false;
+
+                turbine1L.GetComponent<SpriteRenderer>().enabled = false;
+                turbine2L.GetComponent<SpriteRenderer>().enabled = false;
+                turbine3L.GetComponent<SpriteRenderer>().enabled = false;
+                turbine4L.GetComponent<SpriteRenderer>().enabled = false;
+
+                turbine1R.GetComponent<SpriteRenderer>().enabled = false;
+                turbine2R.GetComponent<SpriteRenderer>().enabled = false;
+                turbine3R.GetComponent<SpriteRenderer>().enabled = false;
+                turbine4R.GetComponent<SpriteRenderer>().enabled = false;
+
+                controll1L.GetComponent<SpriteRenderer>().enabled = false;
+                controll2L.GetComponent<SpriteRenderer>().enabled = false;
+                controll3L.GetComponent<SpriteRenderer>().enabled = false;
+                controll4L.GetComponent<SpriteRenderer>().enabled = false;
+
+                controll1R.GetComponent<SpriteRenderer>().enabled = false;
+                controll2R.GetComponent<SpriteRenderer>().enabled = false;
+                controll3R.GetComponent<SpriteRenderer>().enabled = false;
+                controll4R.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }
