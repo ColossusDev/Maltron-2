@@ -56,10 +56,10 @@ public class SkillMenuController : MonoBehaviour {
     void Start () {
         gameData = GameObject.Find("GameDataController");
 
-        skill1Price = 250;
-        skill2Price = 150;
+        skill1Price = 150;
+        skill2Price = 300;
         skill3Price = 500;
-        skill4Price = 300;
+        skill4Price = 250;
 
 
         UIUpdate();
@@ -72,10 +72,10 @@ public class SkillMenuController : MonoBehaviour {
 
     void UIUpdate()
     {
-        skill1PriceText.GetComponent<Text>().text = skill1Price * (2 * gameData.GetComponent<GameData>().skillLaserDamage + 1) + "$";
-        skill2PriceText.GetComponent<Text>().text = skill2Price * (2 * gameData.GetComponent<GameData>().skillLaserSpeed + 1) + "$";
-        skill3PriceText.GetComponent<Text>().text = skill3Price * (2 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1) + "$";
-        skill4PriceText.GetComponent<Text>().text = skill4Price * (2 * gameData.GetComponent<GameData>().skillHullStability + 1) + "$";
+        skill1PriceText.GetComponent<Text>().text = skill1Price * (3 * gameData.GetComponent<GameData>().skillLaserDamage + 1) + "$";
+        skill2PriceText.GetComponent<Text>().text = skill2Price * (3 * gameData.GetComponent<GameData>().skillLaserSpeed + 1) + "$";
+        skill3PriceText.GetComponent<Text>().text = skill3Price * (3 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1) + "$";
+        skill4PriceText.GetComponent<Text>().text = skill4Price * (3 * gameData.GetComponent<GameData>().skillHullStability + 1) + "$";
 
         if (gameData.GetComponent<GameData>().skillLaserDamage == 6)
         {
@@ -201,24 +201,24 @@ public class SkillMenuController : MonoBehaviour {
 
     public void BuySkill(int skill)
     {
-        if (skill == 1 && gameData.GetComponent<GameData>().money >= skill1Price * (2 * gameData.GetComponent<GameData>().skillLaserDamage+1) && gameData.GetComponent<GameData>().skillLaserDamage < 6)
+        if (skill == 1 && gameData.GetComponent<GameData>().money >= skill1Price * (3 * gameData.GetComponent<GameData>().skillLaserDamage+1) && gameData.GetComponent<GameData>().skillLaserDamage < 6)
         {
-            gameData.GetComponent<GameData>().money -= skill1Price * (2 * gameData.GetComponent<GameData>().skillLaserDamage + 1);
+            gameData.GetComponent<GameData>().money -= skill1Price * (3 * gameData.GetComponent<GameData>().skillLaserDamage + 1);
             gameData.GetComponent<GameData>().skillLaserDamage++;
         }
-        if (skill == 2 && gameData.GetComponent<GameData>().money >= skill2Price * (2 * gameData.GetComponent<GameData>().skillLaserSpeed + 1) && gameData.GetComponent<GameData>().skillLaserSpeed < 6)
+        if (skill == 2 && gameData.GetComponent<GameData>().money >= skill2Price * (3 * gameData.GetComponent<GameData>().skillLaserSpeed + 1) && gameData.GetComponent<GameData>().skillLaserSpeed < 6)
         {
-            gameData.GetComponent<GameData>().money -= skill2Price * (2 * gameData.GetComponent<GameData>().skillLaserSpeed + 1);
+            gameData.GetComponent<GameData>().money -= skill2Price * (3 * gameData.GetComponent<GameData>().skillLaserSpeed + 1);
             gameData.GetComponent<GameData>().skillLaserSpeed++;
         }
-        if (skill == 3 && gameData.GetComponent<GameData>().money >= skill3Price * (2 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1) && gameData.GetComponent<GameData>().skillTurbineSpeed < 6)
+        if (skill == 3 && gameData.GetComponent<GameData>().money >= skill3Price * (3 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1) && gameData.GetComponent<GameData>().skillTurbineSpeed < 6)
         {
-            gameData.GetComponent<GameData>().money -= skill3Price * (2 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1);
+            gameData.GetComponent<GameData>().money -= skill3Price * (3 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1);
             gameData.GetComponent<GameData>().skillTurbineSpeed++;
         }
-        if (skill == 4 && gameData.GetComponent<GameData>().money >= skill4Price * (2 * gameData.GetComponent<GameData>().skillHullStability + 1) && gameData.GetComponent<GameData>().skillHullStability < 6)
+        if (skill == 4 && gameData.GetComponent<GameData>().money >= skill4Price * (3 * gameData.GetComponent<GameData>().skillHullStability + 1) && gameData.GetComponent<GameData>().skillHullStability < 6)
         {
-            gameData.GetComponent<GameData>().money -= skill4Price * (2 * gameData.GetComponent<GameData>().skillHullStability + 1);
+            gameData.GetComponent<GameData>().money -= skill4Price * (3 * gameData.GetComponent<GameData>().skillHullStability + 1);
             gameData.GetComponent<GameData>().skillHullStability++;
         }
 

@@ -123,25 +123,25 @@ public class ShipCreatorController : MonoBehaviour {
             }
         }
 
-        item1Prices[0] = 100;
-        item2Prices[0] = 100;
-        item3Prices[0] = 100;
-        item4Prices[0] = 100;
+        item1Prices[0] = 2500;
+        item2Prices[0] = 1000;
+        item3Prices[0] = 1000;
+        item4Prices[0] = 1200;
 
-        item1Prices[1] = 200;
-        item2Prices[1] = 200;
-        item3Prices[1] = 200;
-        item4Prices[1] = 200;
+        item1Prices[1] = 3500;
+        item2Prices[1] = 8000;
+        item3Prices[1] = 2000;
+        item4Prices[1] = 2500;
 
-        item1Prices[2] = 300;
-        item2Prices[2] = 300;
-        item3Prices[2] = 300;
-        item4Prices[2] = 300;
+        item1Prices[2] = 5000;
+        item2Prices[2] = 25000;
+        item3Prices[2] = 6000;
+        item4Prices[2] = 7000;
 
-        item1Prices[3] = 400;
-        item2Prices[3] = 400;
-        item3Prices[3] = 400;
-        item4Prices[3] = 400;
+        item1Prices[3] = 14000;
+        item2Prices[3] = 80000;
+        item3Prices[3] = 12000;
+        item4Prices[3] = 15000;
 
         UIUpdate();
     }
@@ -375,7 +375,7 @@ public class ShipCreatorController : MonoBehaviour {
         }
         if (item == 3)
         {
-            if (item2Prices[item3Counter] <= gameData.GetComponent<GameData>().money && gameData.GetComponent<GameData>().ownItem3[item3Counter] == false)
+            if (item3Prices[item3Counter] <= gameData.GetComponent<GameData>().money && gameData.GetComponent<GameData>().ownItem3[item3Counter] == false)
             {
                 gameData.GetComponent<GameData>().money -= item3Prices[item3Counter];
                 gameData.GetComponent<GameData>().ownItem3[item3Counter] = true;

@@ -292,26 +292,26 @@ public class ShipController : MonoBehaviour
                 {
                     turbine1L.GetComponent<SpriteRenderer>().enabled = true;
                     turbine1R.GetComponent<SpriteRenderer>().enabled = true;
-                    shipSpeed *= 1.2f;
+                    shipSpeed *= 1.1f;
                 }
                 if (i == 1)
                 {
                     turbine2L.GetComponent<SpriteRenderer>().enabled = true;
                     turbine2R.GetComponent<SpriteRenderer>().enabled = true;
-                    shipSpeed *= 1.4f;
+                    shipSpeed *= 1.2f;
 
                 }
                 if (i == 2)
                 {
                     turbine3L.GetComponent<SpriteRenderer>().enabled = true;
                     turbine3R.GetComponent<SpriteRenderer>().enabled = true;
-                    shipSpeed *= 1.6f;
+                    shipSpeed *= 1.3f;
                 }
                 if (i == 3)
                 {
                     turbine4L.GetComponent<SpriteRenderer>().enabled = true;
                     turbine4R.GetComponent<SpriteRenderer>().enabled = true;
-                    shipSpeed *= 1.8f;
+                    shipSpeed *= 1.4f;
                 }
             }
         }
@@ -336,21 +336,25 @@ public class ShipController : MonoBehaviour
                 {
                     controll1L.GetComponent<SpriteRenderer>().enabled = true;
                     controll1R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.1f;
                 }
                 if (i == 1)
                 {
                     controll2L.GetComponent<SpriteRenderer>().enabled = true;
                     controll2R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.2f;
                 }
                 if (i == 2)
                 {
                     controll3L.GetComponent<SpriteRenderer>().enabled = true;
                     controll3R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.3f;
                 }
                 if (i == 3)
                 {
                     controll4L.GetComponent<SpriteRenderer>().enabled = true;
                     controll4R.GetComponent<SpriteRenderer>().enabled = true;
+                    shipSpeed *= 1.4f;
                 }
             }
         }
