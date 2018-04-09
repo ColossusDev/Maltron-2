@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
+
 
 
 public class GameData : MonoBehaviour {
+
+    PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+
+
 
     public static GameData gameData;
 
@@ -34,6 +42,9 @@ public class GameData : MonoBehaviour {
     public int skillHullStability;
 
     void Awake () {
+
+
+
         if (gameData == null)
         {
             DontDestroyOnLoad(this.gameObject);
@@ -42,6 +53,17 @@ public class GameData : MonoBehaviour {
         {
             Destroy(this);
         }
+
+        PlayGamesPlatform.InitializeInstance(config);
+
+        PlayGamesPlatform.DebugLogEnabled = true;
+
+        PlayGamesPlatform.Activate();
+
+        // authenticate user:
+        Social.localUser.Authenticate((bool success) => {
+            // handle success or failure
+        });
 
         //wenn keine Datne auf Handy gefunden werden bzw. kein Spieler eingeloggt ist
         if (true)
