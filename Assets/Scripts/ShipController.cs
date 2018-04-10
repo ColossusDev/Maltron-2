@@ -398,6 +398,26 @@ public class ShipController : MonoBehaviour
                 shooting = false;
             }
 
+            for (int i = 0; i < Input.touchCount; ++i)
+            {
+                if (Input.touchCount <= 0)
+                {
+                    shooting = false;
+                }
+                else
+                {
+                    if (Input.GetTouch(i).phase == TouchPhase.Began)
+                    {
+                        shooting = true;
+                    }
+                    if (Input.GetTouch(i).phase == TouchPhase.Ended)
+                    {
+                        shooting = false;
+                    }
+                }
+                
+            }
+
             if (gunCoolDownTimer > 0)
             {
                 gunCoolDownTimer -= Time.deltaTime;

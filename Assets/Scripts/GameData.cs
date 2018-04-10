@@ -41,6 +41,8 @@ public class GameData : MonoBehaviour {
     public int skillTurbineSpeed;
     public int skillHullStability;
 
+    bool loggin = false;
+
     void Awake () {
 
 
@@ -54,16 +56,21 @@ public class GameData : MonoBehaviour {
             Destroy(this);
         }
 
-        PlayGamesPlatform.InitializeInstance(config);
 
-        PlayGamesPlatform.DebugLogEnabled = true;
+        if (loggin == true)
+        {
+            PlayGamesPlatform.InitializeInstance(config);
 
-        PlayGamesPlatform.Activate();
+            PlayGamesPlatform.DebugLogEnabled = true;
 
-        // authenticate user:
-        Social.localUser.Authenticate((bool success) => {
-            // handle success or failure
-        });
+            PlayGamesPlatform.Activate();
+
+            // authenticate user:
+            Social.localUser.Authenticate((bool success) => {
+                loggin = true;
+            });
+        }
+
 
         //wenn keine Datne auf Handy gefunden werden bzw. kein Spieler eingeloggt ist
         if (true)
