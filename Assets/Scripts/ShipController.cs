@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEditor.UI;
 
 
 public class ShipController : MonoBehaviour
@@ -360,6 +359,8 @@ public class ShipController : MonoBehaviour
         }
     }
 
+    float translation;
+    Gyroscope gyro = Input.gyro;
 
     void Update()
     {
@@ -377,7 +378,17 @@ public class ShipController : MonoBehaviour
 
             if (dead != true)
             {
-            float translation = Input.GetAxis("Horizontal") * shipSpeed;
+
+            if (gameData.GetComponent<GameData>().gyroControlls == true)
+            {
+                Gyroscope gyro = Input.gyro;
+                translation = gyro.gravity.x * shipSpeed;
+            }
+            else
+            {
+                translation = Input.GetAxis("Horizontal") * shipSpeed;
+            }
+
             translation *= Time.deltaTime;
             this.gameObject.transform.Translate(translation, 0, 0);
 
@@ -397,6 +408,26 @@ public class ShipController : MonoBehaviour
             if (Input.GetButtonUp("Jump") == true)
             {
                 shooting = false;
+            }
+
+            for (int i = 0; i < Input.touchCount; ++i)
+            {
+                if (Input.touchCount <= 0)
+                {
+                    shooting = false;
+                }
+                else
+                {
+                    if (Input.GetTouch(i).phase == TouchPhase.Began)
+                    {
+                        shooting = true;
+                    }
+                    if (Input.GetTouch(i).phase == TouchPhase.Ended)
+                    {
+                        shooting = false;
+                    }
+                }
+                
             }
 
             if (gunCoolDownTimer > 0)

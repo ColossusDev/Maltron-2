@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
+
 
 
 public class GameData : MonoBehaviour {
+
+    PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+
+
 
     public static GameData gameData;
 
@@ -33,7 +41,14 @@ public class GameData : MonoBehaviour {
     public int skillTurbineSpeed;
     public int skillHullStability;
 
+    bool loggin = false;
+
+    public bool gyroControlls = true;
+
     void Awake () {
+
+
+
         if (gameData == null)
         {
             DontDestroyOnLoad(this.gameObject);
@@ -42,6 +57,22 @@ public class GameData : MonoBehaviour {
         {
             Destroy(this);
         }
+
+
+        if (loggin == true)
+        {
+            PlayGamesPlatform.InitializeInstance(config);
+
+            PlayGamesPlatform.DebugLogEnabled = true;
+
+            PlayGamesPlatform.Activate();
+
+            // authenticate user:
+            Social.localUser.Authenticate((bool success) => {
+                loggin = true;
+            });
+        }
+
 
         //wenn keine Datne auf Handy gefunden werden bzw. kein Spieler eingeloggt ist
         if (true)
