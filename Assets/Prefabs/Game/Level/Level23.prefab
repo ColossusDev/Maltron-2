@@ -9,62 +9,50 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1627658786461546}
+  m_RootGameObject: {fileID: 1755636000486446}
   m_IsPrefabParent: 1
---- !u!1 &1627658786461546
+--- !u!1 &1755636000486446
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4308858749477358}
-  - component: {fileID: 114095882625408738}
+  - component: {fileID: 4480911979454902}
+  - component: {fileID: 114646297982050636}
   m_Layer: 0
-  m_Name: GameDataController
+  m_Name: Level23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4308858749477358
+--- !u!4 &4480911979454902
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1627658786461546}
+  m_GameObject: {fileID: 1755636000486446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0408105, y: 3.1040492, z: -0.018554688}
+  m_LocalPosition: {x: 125.49999, y: 201.30618, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114095882625408738
+--- !u!114 &114646297982050636
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1627658786461546}
+  m_GameObject: {fileID: 1755636000486446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229641d94ccdcd844841ccb8b8b6c63c, type: 3}
+  m_Script: {fileID: 11500000, guid: 42c6b54574984ed48a764a6e838e2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelMap: 
-  money: 0
-  currentLevel: 0
-  success: 0
-  equiptItem1: 00000000
-  equiptItem2: 00000000
-  equiptItem3: 00000000
-  equiptItem4: 00000000
-  ownItem1: 00000000
-  ownItem2: 00000000
-  ownItem3: 00000000
-  ownItem4: 00000000
-  skillLaserDamage: 0
-  skillLaserSpeed: 0
-  skillTurbineSpeed: 0
-  skillHullStability: 0
-  gyroControlls: 0
+  enemys: []
+  finalE: {fileID: 0}
+  levelDuration: 40
+  enemyCount: 0
+  finalEnemy: 0

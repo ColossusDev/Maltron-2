@@ -37,6 +37,9 @@ public class ShipController : MonoBehaviour
     bool dead = false;
     float deadCounter = 1;
 
+    float translation;
+    Gyroscope gyro;
+
 
     GameObject life1;
 
@@ -84,6 +87,12 @@ public class ShipController : MonoBehaviour
 
         life1 = GameObject.Find("Canvas/MainPanel/LifePanel/Text");
 
+
+#if UNITY_EDITOR
+        Debug.Log("Gyroskope würde auf Android eingelesen werden");
+#elif UNITY_ANDROID
+        gyro = Input.gyro;
+#endif
 
         ship0 = GameObject.Find("Player/Ships/ship0");
         ship1 = GameObject.Find("Player/Ships/ship1");
@@ -359,8 +368,7 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    float translation;
-    Gyroscope gyro = Input.gyro;
+     
 
     void Update()
     {
