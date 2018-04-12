@@ -88,11 +88,9 @@ public class ShipController : MonoBehaviour
         life1 = GameObject.Find("Canvas/MainPanel/LifePanel/Text");
 
 
-#if UNITY_EDITOR
-        Debug.Log("Gyroskope würde auf Android eingelesen werden");
-#elif UNITY_ANDROID
+
         gyro = Input.gyro;
-#endif
+
 
         ship0 = GameObject.Find("Player/Ships/ship0");
         ship1 = GameObject.Find("Player/Ships/ship1");
