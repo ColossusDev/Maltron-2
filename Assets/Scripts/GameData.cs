@@ -43,6 +43,8 @@ public class GameData : MonoBehaviour {
 
     bool loggin = false;
 
+    public bool gyroControlls = true;
+
     void Awake () {
 
 
