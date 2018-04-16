@@ -23,7 +23,7 @@ public class ShipController : MonoBehaviour
     public GameObject usedShot;
 
 
-    float shipSpeed = 1;
+    float shipSpeed = 1.5f;
 
     bool shooting = false;
     public float gunCoolDown = 0;
@@ -38,8 +38,6 @@ public class ShipController : MonoBehaviour
     float deadCounter = 1;
 
     float translation;
-    Gyroscope gyro;
-
 
     GameObject life1;
 
@@ -86,10 +84,6 @@ public class ShipController : MonoBehaviour
         gameData = GameObject.Find("GameDataController");
 
         life1 = GameObject.Find("Canvas/MainPanel/LifePanel/Text");
-
-
-
-        gyro = Input.gyro;
 
 
         ship0 = GameObject.Find("Player/Ships/ship0");
@@ -387,8 +381,7 @@ public class ShipController : MonoBehaviour
 
             if (gameData.GetComponent<GameData>().gyroControlls == true)
             {
-                Gyroscope gyro = Input.gyro;
-                translation = gyro.gravity.x * shipSpeed;
+                translation = Input.acceleration.x * shipSpeed;
             }
             else
             {

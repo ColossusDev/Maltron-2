@@ -41,8 +41,6 @@ public class GameData : MonoBehaviour {
     public int skillTurbineSpeed;
     public int skillHullStability;
 
-    bool loggin = false;
-
     public bool gyroControlls = true;
 
     void Awake () {
@@ -59,19 +57,17 @@ public class GameData : MonoBehaviour {
         }
 
 
-        if (loggin == true)
+
+        PlayGamesPlatform.Activate();
+
+        if (Social.localUser.authenticated == false)
         {
-            PlayGamesPlatform.InitializeInstance(config);
-
-            PlayGamesPlatform.DebugLogEnabled = true;
-
-            PlayGamesPlatform.Activate();
-
-            // authenticate user:
-            Social.localUser.Authenticate((bool success) => {
-                loggin = true;
+            Social.localUser.Authenticate((bool success) => 
+            {
+                Debug.Log("Connected");
             });
         }
+        
 
 
         //wenn keine Datne auf Handy gefunden werden bzw. kein Spieler eingeloggt ist
@@ -127,6 +123,10 @@ public class GameData : MonoBehaviour {
         }
 	}
 
+    private void OnConnectionRespone(bool authenticated)
+    {
+
+    }
 
     void SetLevelToStart()
     {
@@ -163,6 +163,36 @@ public class GameData : MonoBehaviour {
         SceneManager.LoadScene("Achievements", LoadSceneMode.Single);
     }
 
+    public void OnAchievementClick()
+    {
+        if (Social.localUser.authenticated)
+        {
+            Social.ShowAchievementsUI();
+        }
+    }
 
+    public void OnLeaderboardClick()
+    {
+        if (Social.localUser.authenticated)
+        {
+            Social.ShowLeaderboardUI();
+        }
+    }
+
+    public void UnlockAchievement(string id)
+    {
+        Social.ReportProgress(id,100,(bool success) => 
+        {
+        Debug.Log("Achievement Unlocked" + success.ToString());
+        });
+    }
+
+    public void ReportScore(int score)
+    {
+        Social.ReportScore(score, AndroidController.leaderboard_top_player, (bool sucess) => 
+        {
+            Debug.Log("Score Reported" + score.ToString());
+        });
+    }
 
 }

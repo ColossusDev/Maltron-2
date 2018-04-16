@@ -67,4 +67,4 @@ MonoBehaviour:
   skillLaserSpeed: 0
   skillTurbineSpeed: 0
   skillHullStability: 0
-  gyroControlls: 0
+  gyroControlls: 1

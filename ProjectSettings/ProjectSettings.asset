@@ -7,7 +7,7 @@ PlayerSettings:
   productGUID: 0ddc2e083c60f384a9592613bfb5dd93
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -245,7 +245,7 @@ PlayerSettings:
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: C:/Users/kleim/Documents/Unity Projekts/keystoreKleimann.keystore
   AndroidKeyaliasName: mk
-  AndroidTVCompatibility: 1
+  AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
