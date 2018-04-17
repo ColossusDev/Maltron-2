@@ -69,7 +69,7 @@ public class MeteorScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Shot")
         {
-            life --;
+            life = life - (gameData.GetComponent<GameData>().skillLaserDamage+1);
             Destroy(collision.gameObject);
         }
 
@@ -82,6 +82,7 @@ public class MeteorScript : MonoBehaviour {
                 Instantiate(split3, this.gameObject.transform.position + new Vector3(-0.5f, 0.5f, 0), split3.transform.rotation);
             }
             gameData.AddMoney(baseLife * moneyMultiplier);
+            gameData.pointScore += (baseLife * moneyMultiplier);
             Destroy(this.gameObject);
         }
     }

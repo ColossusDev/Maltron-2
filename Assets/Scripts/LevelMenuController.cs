@@ -35,6 +35,8 @@ public class LevelMenuController : MonoBehaviour {
 
         if (levelMap[level-1] == 1 || levelMap[level-1] == 2)
         {
+            gameData.GetComponent<GameData>().plays++;
+
             gameData.GetComponent<GameData>().currentLevel = level;
             SceneManager.LoadScene("Game", LoadSceneMode.Single);
             Debug.Log("Loading Level: " + level);

@@ -87,13 +87,14 @@ public class EnemyShipScript3 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Shot")
         {
-            life--;
+            life = life - (gameData.GetComponent<GameData>().skillLaserDamage + 1);
             Destroy(collision.gameObject);
         }
 
         if (life <= 0)
         {
             gameData.AddMoney(baseLife * moneyMultiplier);
+            gameData.pointScore += (baseLife * moneyMultiplier);
             Destroy(this.gameObject);
         }
     }

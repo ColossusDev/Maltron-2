@@ -15,6 +15,8 @@ public class EndScreenController : MonoBehaviour {
     GameObject restartButton;
     GameObject textRestartButton;
 
+    int endScore;
+
     // Use this for initialization
     void Start () {
         gameData = GameObject.Find("GameDataController");
@@ -39,6 +41,16 @@ public class EndScreenController : MonoBehaviour {
             restartButton.GetComponent<Image>().enabled = true;
             restartButton.GetComponent<Button>().enabled = true;
         }
+
+        if (gameData.GetComponent<GameData>().plays >= 5)
+        {
+            gameData.GetComponent<GameData>().plays = 0;
+            gameData.GetComponent<GameData>().ShowNormalVideo();
+        }
+
+        endScore = gameData.GetComponent<GameData>().pointScore;
+        gameData.GetComponent<GameData>().pointScore = 0;
+
     }
 
     // Update is called once per frame
@@ -56,12 +68,16 @@ public class EndScreenController : MonoBehaviour {
 
     public void RestartLevel()
     {
+        gameData.GetComponent<GameData>().plays++;
+
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
         Debug.Log("Loading Level: " + gameData.GetComponent<GameData>().currentLevel);
     }
 
     public void PlayNextLevel()
     {
+        gameData.GetComponent<GameData>().plays++;
+
         gameData.GetComponent<GameData>().currentLevel += 1;
         gameData.GetComponent<GameData>().success = false;
         SceneManager.LoadScene("Game", LoadSceneMode.Single);

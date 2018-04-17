@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.Advertisements;
 
 
 
 public class GameData : MonoBehaviour {
 
     PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+
 
 
 
@@ -43,6 +45,12 @@ public class GameData : MonoBehaviour {
 
     public bool gyroControlls = true;
 
+    public bool sound = true;
+
+    public int plays = 0;
+
+    public int pointScore = 0;
+
     void Awake () {
 
 
@@ -66,8 +74,11 @@ public class GameData : MonoBehaviour {
             {
                 Debug.Log("Connected");
             });
+
+            Advertisement.Initialize("1772390");
+
         }
-        
+
 
 
         //wenn keine Datne auf Handy gefunden werden bzw. kein Spieler eingeloggt ist
@@ -112,6 +123,11 @@ public class GameData : MonoBehaviour {
         }
 	}
 	
+    public void ShowNormalVideo()
+    {
+        Advertisement.Show("rewardedVideo");
+    }
+
 	void Update () {
         if (moneyText == null)
         {
