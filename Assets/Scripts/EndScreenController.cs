@@ -48,8 +48,14 @@ public class EndScreenController : MonoBehaviour {
             gameData.GetComponent<GameData>().ShowNormalVideo();
         }
 
+        gameData.GetComponent<GameData>().IncrementelAchievement("CgkI-6upgdEeEAIQBw", gameData.GetComponent<GameData>().kills);
+        gameData.GetComponent<GameData>().IncrementelAchievement("CgkI-6upgdEeEAIQCA", gameData.GetComponent<GameData>().kills);
+        gameData.GetComponent<GameData>().IncrementelAchievement("CgkI-6upgdEeEAIQCQ", gameData.GetComponent<GameData>().kills);
+
+
         endScore = gameData.GetComponent<GameData>().pointScore;
         gameData.GetComponent<GameData>().pointScore = 0;
+        gameData.GetComponent<GameData>().kills = 0;
 
     }
 

@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemys:
   - {fileID: 1407961780133352, guid: abb7ae29e70320e449af70c4d315fc32, type: 2}
+  - {fileID: 1794952629902454, guid: 98f40163c4d09ef478b710df06144774, type: 2}
   finalE: {fileID: 0}
   levelDuration: 60
   enemyCount: 8

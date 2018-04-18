@@ -505,6 +505,8 @@ public class ShipController : MonoBehaviour
             {
                 Instantiate(explosion, this.gameObject.transform.position + new Vector3(0, 0, 0), explosion.transform.rotation);
                 dead = true;
+                gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQBA");
+
 
                 ship0.GetComponent<SpriteRenderer>().enabled = false;
                 ship1.GetComponent<SpriteRenderer>().enabled = false;

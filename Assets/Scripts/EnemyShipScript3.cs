@@ -95,6 +95,8 @@ public class EnemyShipScript3 : MonoBehaviour
         {
             gameData.AddMoney(baseLife * moneyMultiplier);
             gameData.pointScore += (baseLife * moneyMultiplier);
+            gameData.UnlockAchievement("CgkI-6upgdEeEAIQAw");
+            gameData.kills++;
             Destroy(this.gameObject);
         }
     }

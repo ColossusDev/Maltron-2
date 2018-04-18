@@ -93,6 +93,7 @@ public class EnemyShipScript2 : MonoBehaviour
         {
             gameData.AddMoney(baseLife * moneyMultiplier);
             gameData.pointScore += (baseLife * moneyMultiplier);
+            gameData.kills++;
             Destroy(this.gameObject);
         }
     }

@@ -50,6 +50,7 @@ public class GameData : MonoBehaviour {
     public int plays = 0;
 
     public int pointScore = 0;
+    public int kills = 0;
 
     void Awake () {
 
@@ -201,6 +202,11 @@ public class GameData : MonoBehaviour {
         {
         Debug.Log("Achievement Unlocked" + success.ToString());
         });
+    }
+
+    public void IncrementelAchievement(string id, int count)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, count, success => { });
     }
 
     public void ReportScore(int score)

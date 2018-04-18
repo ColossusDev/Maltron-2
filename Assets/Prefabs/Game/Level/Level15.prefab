@@ -51,8 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c6b54574984ed48a764a6e838e2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemys: []
+  enemys:
+  - {fileID: 1802920569128778, guid: cd41caab60ec82a439451dde92aeb533, type: 2}
+  - {fileID: 1287849513883022, guid: 659101a6f6e11164081842d5e1bd8a9b, type: 2}
   finalE: {fileID: 0}
   levelDuration: 40
-  enemyCount: 0
+  enemyCount: 20
   finalEnemy: 0

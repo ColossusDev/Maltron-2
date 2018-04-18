@@ -322,6 +322,7 @@ public class ShipCreatorController : MonoBehaviour {
             {
                 gameData.GetComponent<GameData>().money -= item1Prices[item1Counter];
                 gameData.GetComponent<GameData>().ownItem1[item1Counter] = true;
+                gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAQ");
                 for (int i = 0; i < gameData.GetComponent<GameData>().ownItem1.Length; i++)
                 {
                     gameData.GetComponent<GameData>().equiptItem1[i] = false;
@@ -350,6 +351,7 @@ public class ShipCreatorController : MonoBehaviour {
             {
                 gameData.GetComponent<GameData>().money -= item2Prices[item2Counter];
                 gameData.GetComponent<GameData>().ownItem2[item2Counter] = true;
+                gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAQ");
                 for (int i = 0; i < gameData.GetComponent<GameData>().ownItem2.Length; i++)
                 {
                     gameData.GetComponent<GameData>().equiptItem2[i] = false;
@@ -378,6 +380,7 @@ public class ShipCreatorController : MonoBehaviour {
             {
                 gameData.GetComponent<GameData>().money -= item3Prices[item3Counter];
                 gameData.GetComponent<GameData>().ownItem3[item3Counter] = true;
+                gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAQ");
                 for (int i = 0; i < gameData.GetComponent<GameData>().ownItem3.Length; i++)
                 {
                     gameData.GetComponent<GameData>().equiptItem3[i] = false;
@@ -406,6 +409,7 @@ public class ShipCreatorController : MonoBehaviour {
             {
                 gameData.GetComponent<GameData>().money -= item4Prices[item4Counter];
                 gameData.GetComponent<GameData>().ownItem4[item4Counter] = true;
+                gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAQ");
                 for (int i = 0; i < gameData.GetComponent<GameData>().ownItem4.Length; i++)
                 {
                     gameData.GetComponent<GameData>().equiptItem4[i] = false;

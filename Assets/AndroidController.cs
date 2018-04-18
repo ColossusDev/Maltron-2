@@ -24,12 +24,15 @@
 
 public static class AndroidController
 {
-        public const string achievement_test5 = "CgkI-6upgdEeEAIQBQ"; // <GPGSID>
         public const string leaderboard_top_player = "CgkI-6upgdEeEAIQBg"; // <GPGSID>
-        public const string achievement_test1 = "CgkI-6upgdEeEAIQAQ"; // <GPGSID>
-        public const string achievement_test2 = "CgkI-6upgdEeEAIQAg"; // <GPGSID>
-        public const string achievement_test3 = "CgkI-6upgdEeEAIQAw"; // <GPGSID>
-        public const string achievement_test4 = "CgkI-6upgdEeEAIQBA"; // <GPGSID>
+        public const string achievement_endboss = "CgkI-6upgdEeEAIQAw"; // <GPGSID>
+        public const string achievement_endless_space = "CgkI-6upgdEeEAIQBQ"; // <GPGSID>
+        public const string achievement_spaceshopper = "CgkI-6upgdEeEAIQAQ"; // <GPGSID>
+        public const string achievement_master_of_the_universe = "CgkI-6upgdEeEAIQCQ"; // <GPGSID>
+        public const string achievement_spacinator = "CgkI-6upgdEeEAIQCA"; // <GPGSID>
+        public const string achievement_die = "CgkI-6upgdEeEAIQBA"; // <GPGSID>
+        public const string achievement_skiller = "CgkI-6upgdEeEAIQAg"; // <GPGSID>
+        public const string achievement_crusher = "CgkI-6upgdEeEAIQBw"; // <GPGSID>
 
 }
 

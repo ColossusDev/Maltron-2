@@ -205,21 +205,25 @@ public class SkillMenuController : MonoBehaviour {
         {
             gameData.GetComponent<GameData>().money -= skill1Price * (3 * gameData.GetComponent<GameData>().skillLaserDamage + 1);
             gameData.GetComponent<GameData>().skillLaserDamage++;
+            gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAg");
         }
         if (skill == 2 && gameData.GetComponent<GameData>().money >= skill2Price * (3 * gameData.GetComponent<GameData>().skillLaserSpeed + 1) && gameData.GetComponent<GameData>().skillLaserSpeed < 6)
         {
             gameData.GetComponent<GameData>().money -= skill2Price * (3 * gameData.GetComponent<GameData>().skillLaserSpeed + 1);
             gameData.GetComponent<GameData>().skillLaserSpeed++;
+            gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAg");
         }
         if (skill == 3 && gameData.GetComponent<GameData>().money >= skill3Price * (3 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1) && gameData.GetComponent<GameData>().skillTurbineSpeed < 6)
         {
             gameData.GetComponent<GameData>().money -= skill3Price * (3 * gameData.GetComponent<GameData>().skillTurbineSpeed + 1);
             gameData.GetComponent<GameData>().skillTurbineSpeed++;
+            gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAg");
         }
         if (skill == 4 && gameData.GetComponent<GameData>().money >= skill4Price * (3 * gameData.GetComponent<GameData>().skillHullStability + 1) && gameData.GetComponent<GameData>().skillHullStability < 6)
         {
             gameData.GetComponent<GameData>().money -= skill4Price * (3 * gameData.GetComponent<GameData>().skillHullStability + 1);
             gameData.GetComponent<GameData>().skillHullStability++;
+            gameData.GetComponent<GameData>().UnlockAchievement("CgkI-6upgdEeEAIQAg");
         }
 
         UIUpdate();
