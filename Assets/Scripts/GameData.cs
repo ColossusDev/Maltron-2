@@ -12,7 +12,7 @@ using UnityEngine.Advertisements;
 
 public class GameData : MonoBehaviour {
 
-    PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+    //PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
 
 
 
@@ -67,7 +67,7 @@ public class GameData : MonoBehaviour {
 
 
 
-        PlayGamesPlatform.Activate();
+        //PlayGamesPlatform.Activate();
 
         if (Social.localUser.authenticated == false)
         {
@@ -206,7 +206,7 @@ public class GameData : MonoBehaviour {
 
     public void IncrementelAchievement(string id, int count)
     {
-        PlayGamesPlatform.Instance.IncrementAchievement(id, count, success => { });
+        //PlayGamesPlatform.Instance.IncrementAchievement(id, count, success => { });
     }
 
     public void ReportScore(int score)
